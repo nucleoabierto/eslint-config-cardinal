@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Cache files
+.eslintcache
+.npm
+
+# Editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# VitePress build output
+docs/.vitepress/dist/
+
+# VitePress cache
+docs/.vitepress/cache/
+
+# Temporary files
+.temp/
+.tmp/
+
+# Context tracking (local only)
+.context/
