@@ -1,0 +1,84 @@
+{
+  "name": "@nucleoabierto/eslint-config-cardinal",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Modern ESLint configuration that balances strictness with pragmatism, following clean code principles with optional TypeScript support",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    }
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "cardinal"
+  ],
+  "author": "Gildardo Adrian Maravilla Jacome",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nucleoabierto/eslint-config-cardinal.git"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "eslint-import-resolver-typescript": ">=4.4.4",
+    "eslint-plugin-jsx-a11y": ">=6.10.2",
+    "eslint-plugin-react": ">=7.37.5",
+    "eslint-plugin-react-hooks": ">=7.0.1",
+    "typescript-eslint": ">=8.55.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint-import-resolver-typescript": {
+      "optional": true
+    },
+    "eslint-plugin-jsx-a11y": {
+      "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "typescript-eslint": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
+    "@stylistic/eslint-plugin": "^5.9.0",
+    "eslint-plugin-import-x": "^4.16.0",
+    "eslint-plugin-n": "^17.24.0",
+    "eslint-plugin-promise": "^7.0.0",
+    "eslint-plugin-regexp": "^3.0.0",
+    "eslint-plugin-security": "^4.0.0",
+    "eslint-plugin-sonarjs": "^4.0.0",
+    "eslint-plugin-unicorn": "^63.0.0",
+    "globals": "^17.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "markdownlint-cli": "^0.47.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.56.0",
+    "vitepress": "^1.6.4"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ]
+}
