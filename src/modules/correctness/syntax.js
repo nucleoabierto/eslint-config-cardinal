@@ -126,9 +126,9 @@ export default {
      * Operadores que pueden causar bugs o comportamiento inesperado.
      */
     /*
-     * void 0 es un patrón obsoleto para undefined.
-     * Modernamente usamos undefined directamente.
-     * Razón: Modernización y claridad
+     * El operador void es no-obvio y dificulta la lectura del código.
+     * void 0 como alias de undefined ha quedado desplazado por el uso directo de undefined.
+     * Razón: Claridad del código
      */
     'no-void': 'error',
 
@@ -220,9 +220,9 @@ export default {
     'no-inner-declarations': 'error',
 
     /*
-     * Sintaxis octal obsoleta puede ser confundida.
-     * Usar 0o para octal explícito en ES6+.
-     * Razón: Modernización y claridad
+     * \8 y \9 en strings son escapes decimales no-octales (8 y 9 no son dígitos octales válidos).
+     * Son sintaxis legada sin valor semántico: "\8" === "8". Solo soportados en non-strict mode.
+     * Razón: Evitar sintaxis legada sin significado real
      */
     'no-nonoctal-decimal-escape': 'error',
 

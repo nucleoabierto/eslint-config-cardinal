@@ -176,9 +176,9 @@ export default {
     'no-unreachable': 'error',
 
     /*
-     * Bucles con condiciones siempre falsas nunca iteran.
-     * Indican error en la lógica del bucle.
-     * Razón: Detectar bucles muertos
+     * Bucles cuyo cuerpo siempre sale en la primera iteración (break/return/throw) nunca iteran más.
+     * Si todos los caminos del cuerpo salen del bucle, la segunda iteración es inalcanzable.
+     * Razón: Detectar bucles que solo pueden ejecutarse una vez
      */
     'no-unreachable-loop': 'error',
 
@@ -224,9 +224,9 @@ export default {
     'no-unsafe-negation': ['error', { enforceForOrderingRelations: true }],
 
     /*
-     * Optional chaining en null/undefined es seguro,
-     * pero en otros valores puede ocultar errores.
-     * Razón: Prevenir uso incorrecto de ?.
+     * El optional chaining cortocircuita a undefined, y ese undefined en ciertas posiciones lanza TypeError.
+     * Ej: (obj?.foo)() lanza si obj?.foo es undefined; (obj?.x) + 1 produce NaN.
+     * Razón: Prevenir TypeErrors causados por el cortocircuito de ?.
      */
     'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
 
@@ -268,9 +268,9 @@ export default {
      * Errores en el uso de prototipos y herencia.
      */
     /*
-     * Llamar métodos de prototipo directamente es inseguro.
-     * obj.hasOwnProperty() puede ser sobrescrito.
-     * Razón: Prevenir shadowing de prototipos
+     * Los métodos de Object.prototype pueden ser sobrescritos o no existir en Object.create(null).
+     * Usar Object.prototype.hasOwnProperty.call(obj, key) o el moderno Object.hasOwn(obj, key).
+     * Razón: Prevenir fallos con objetos sin prototipo o con propiedades que hacen shadowing
      */
     'no-prototype-builtins': 'error',
 
@@ -279,9 +279,9 @@ export default {
      * Errores de concurrencia en operaciones asíncronas.
      */
     /*
-     * Actualizaciones no atómicas pueden causar race conditions.
-     * x += y no es atómico en ambientes concurrentes.
-     * Razón: Prevenir bugs de concurrencia
+     * Asignaciones basadas en valores leídos antes de un await/yield pueden usar datos desactualizados.
+     * Ej: x += await fn() puede sobrescribir cambios hechos a x durante la espera.
+     * Razón: Prevenir race conditions en funciones async y generators
      */
     'require-atomic-updates': 'error',
 
@@ -299,9 +299,9 @@ export default {
     'no-constant-binary-expression': 'error',
 
     /*
-     * Return en constructor sobrescribe el objeto creado.
-     * Rompe el patrón de constructor de clases.
-     * Razón: Prevenir constructores que no funcionan
+     * Retornar un valor en un constructor sobrescribe el objeto creado por new.
+     * Solo se permite return vacío (control de flujo); return con valor indica error de lógica.
+     * Razón: Prevenir constructores que no funcionan como se espera
      */
     'no-constructor-return': 'error',
 
@@ -313,9 +313,9 @@ export default {
     'no-dupe-else-if': 'error',
 
     /*
-     * new Object() es menos eficiente que {}.
-     * También puede ser sobrescrito por shadowing.
-     * Razón: Eficiencia y seguridad
+     * new Object() es más verboso que {} y depende del global Object, que puede ser redefinido.
+     * El literal {} crea un objeto sin depender del scope global.
+     * Razón: Concisión y protección ante redefinición del global Object
      */
     'no-object-constructor': 'error',
 
@@ -327,9 +327,9 @@ export default {
     'no-new-native-nonconstructor': 'error',
 
     /*
-     * Setter con return causa comportamiento inesperado.
-     * Los setters no deben retornar valores.
-     * Razón: Prevenir setters que no funcionan
+     * Los setters ignoran cualquier valor retornado; retornar un valor indica error de lógica.
+     * Solo se permite return vacío (control de flujo); return con valor no tiene efecto.
+     * Razón: Prevenir setters con return que nunca tiene efecto
      */
     'no-setter-return': 'error',
 
