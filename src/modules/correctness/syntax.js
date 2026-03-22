@@ -93,7 +93,7 @@ export default {
 
     /*
      * Redeclarar variables causa bugs y confusión.
-     * Permitimos redeclaración de globals (ej: process en Node) por pragmatismo.
+     * builtinGlobals: false evita falsos positivos con variables globales built-in (undefined, NaN, Infinity).
      * Razón: Prevenir bugs de scope
      */
     'no-redeclare': ['error', { builtinGlobals: false }],
@@ -103,9 +103,9 @@ export default {
      * Prevenir bugs de scope en estructuras de control.
      */
     /*
-     * let/const en case sin bloque comparten scope entre cases.
-     * Causa bugs de hoisting y scope inesperados.
-     * Razón: Prevenir bugs de scope
+     * let/const en case sin bloque son accesibles en todos los cases del switch.
+     * El switch completo forma un único bloque; envolver con {} crea scope local por case.
+     * Razón: Prevenir acceso inesperado entre cases
      */
     'no-case-declarations': 'error',
 
@@ -178,9 +178,9 @@ export default {
      * Son 'error' porque rompen la ejecución o causan bugs críticos.
      */
     /*
-     * for-in/for-of con dirección incorrecta causa loops infinitos.
-     * Es un error sutil que puede colgar la aplicación.
-     * Razón: Prevenir loops infinitos
+     * for con índice en dirección incorrecta nunca termina.
+     * Ej: for (let i = 0; i < 10; i--) nunca alcanza la condición de salida.
+     * Razón: Prevenir loops infinitos en bucles for clásicos
      */
     'for-direction': 'error',
 
@@ -192,9 +192,9 @@ export default {
     'getter-return': 'error',
 
     /*
-     * Return en Promise executor causa comportamiento inesperado.
-     * El executor no debe retornar valores.
-     * Razón: Prevenir bugs en manejo de promesas
+     * Usar async como executor de Promise oculta errores de rechazo.
+     * Si la función async lanza, el error no es capturado por el Promise y queda sin manejar.
+     * Razón: Prevenir promesas con rechazos silenciosos
      */
     'no-async-promise-executor': 'error',
 
@@ -227,9 +227,9 @@ export default {
     'no-nonoctal-decimal-escape': 'error',
 
     /*
-     * x = x + y es menos eficiente que x += y.
-     * Operador de asignación es más claro y eficiente.
-     * Razón: Eficiencia y claridad
+     * x = x + y es más verboso que x += y.
+     * Los operadores de asignación compuesta son más concisos y expresivos.
+     * Razón: Concisión y claridad
      */
     'operator-assignment': 'error',
 
@@ -241,9 +241,9 @@ export default {
     'use-isnan': 'error',
 
     /*
-     * typeof null es 'object', error histórico de JS.
-     * Usar === null para verificar null.
-     * Razón: Prevenir bugs de tipo
+     * Comparar typeof con un string inválido siempre es falso.
+     * Ej: typeof x === 'strng' nunca es true (typo de 'string').
+     * Razón: Prevenir typos en comparaciones de tipo
      */
     'valid-typeof': 'error',
 

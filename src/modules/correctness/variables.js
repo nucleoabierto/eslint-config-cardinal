@@ -66,16 +66,16 @@ export default {
     'no-undef-init': 'error',
 
     /*
-     * Condiciones de bucle que no cambian causan loops infinitos.
-     * while (true) es válido, pero while (false) no.
+     * Variables en la condición del bucle que nunca se modifican dentro causan loops infinitos.
+     * Ej: while (active) {} cuando active nunca cambia dentro del cuerpo.
      * Razón: Prevenir bucles infinitos no intencionales
      */
     'no-unmodified-loop-condition': 'error',
 
     /*
-     * Permitir uso antes de definición por flexibilidad en hoisting.
-     * Functions y classes se pueden usar antes de su declaración.
-     * Razón: Flexibilidad con patrones de hoisting
+     * Permite usar funciones, clases y variables antes de su declaración.
+     * Útil para hoisting de funciones y para organizar el código con dependencias al final.
+     * Razón: Flexibilidad con patrones de hoisting y organización de módulos
      */
     'no-use-before-define': ['error', { functions: false, classes: false, variables: false }],
 
