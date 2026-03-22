@@ -5,8 +5,8 @@
  * Incluye las bases de ES6: const/let, arrow functions, spread, rest.
  * Estas reglas son suficientes para proyectos básicos (ver config-basic).
  *
- * Para modernización avanzada (named capture groups, logical assignment, etc.)
- * ver `modern/es-advanced.js`, incluido en config-recommended y superiores.
+ * Para el conjunto completo de modernización (named capture groups, logical assignment, etc.)
+ * ver `modern/es-features.js`, incluido en config-recommended y superiores.
  */
 
 export default {

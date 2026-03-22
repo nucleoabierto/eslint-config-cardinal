@@ -15,7 +15,8 @@ src/modules/
 │   └── variables.js    - Manejo seguro de variables
 │
 ├── modern/             Modernización ES6+
-│   └── es-features.js  - Características modernas de JavaScript
+│   ├── es-fundamentals.js - Bases de ES6 (const/let, arrow, spread, rest)
+│   └── es-features.js     - Conjunto completo ES6+ (incluye fundamentals)
 │
 ├── style/              Formato y estilo visual
 │   ├── formatting.js   - Formato base (comillas, indentación, etc.)
@@ -69,7 +70,7 @@ src/modules/
 Punto de partida para proyectos JavaScript modernos:
 
 - `correctness/*` - Prevención de errores críticos
-- `modern/es-features` - Modernización ES6+
+- `modern/es-fundamentals` - Modernización ES6 básica
 - `style/formatting` - Formato básico
 - `quality/essential` - Calidad esencial
 
