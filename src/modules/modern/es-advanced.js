@@ -20,7 +20,7 @@ export default {
     /*
      * Usar shorthand para propiedades y métodos de objeto.
      * { name } es más claro que { name: name }.
-     * avoidExplicitReturnArrows permite métodos con return explícito.
+     * avoidExplicitReturnArrows: fuerza method shorthand en lugar de arrow functions con return explícito.
      * Razón: Simplificación y legibilidad
      */
     'object-shorthand': [
@@ -51,7 +51,7 @@ export default {
     'prefer-object-spread': 'error',
 
     /*
-     * Preferir named capture groups en expresiones regulares.
+     * Preferir named capture groups en expresiones regulares (ES2018).
      * (?<name>...) es más claro que índices numéricos.
      * Razón: Legibilidad en expresiones complejas
      */
@@ -66,7 +66,7 @@ export default {
 
     /*
      * Usar operadores de asignación lógica (ES2021).
-     * x &&= y es más claro que x = x && y.
+     * x &&= y, x ||= y, x ??= y en lugar de x = x && y, x = x || y, x = x ?? y.
      * Razón: Simplificación y modernización
      */
     'logical-assignment-operators': 'error',

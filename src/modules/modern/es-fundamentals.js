@@ -48,7 +48,7 @@ export default {
 
     /*
      * Preferir arrow functions en callbacks.
-     * () => {} es más conciso que function() {}.
+     * Más concisas que function() {} y con binding léxico de this.
      * Razón: Modernización y legibilidad
      */
     'prefer-arrow-callback': 'error',
